@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<unit name="Нумератор">
+
+	<type name="Нумератор" title="Нумератор" scope="global">
+		<field.number name="Код"/>
+		<field.number name="ЧисловойКод"/>
+		
+		<function name="ЧисловойКод">
+			<get field="owner.Код"/>
+		</function>
+		
+		<state name="constructor">
+			<field.ref name="Последний"/>
+			
+			<function name="Последний">
+				<last>
+					<get value="ТранспортноеСредство-Нумератор"/>
+				</last>
+			</function>
+			
+			<function name="Код">
+				<add>
+					<get field="Последний.ЧисловойКод"/>
+					<get value="1"/>
+				</add>
+			</function>
+			
+			<function name="ЧисловойКод">
+				<get value="0"/>
+			</function>
+			
+		</state>
+		
+		<index name="ТранспортноеСредство-Нумератор">
+			<key field="ЧисловойКод"/>
+		</index>
+	</type>
+
+</unit>

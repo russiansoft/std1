@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<unit name="Период">
+
+	<type name="Период" scope="global">
+		<field.date name="Начало"/>
+		<field.date name="Окончание"/>
+		<field.date name="Новый"/>
+		
+		<state name="constructor">
+			
+			<function name="Начало">
+				<date>
+					<year><today/></year>
+					<month><today/></month>
+					<get value="1"/>
+				</date>
+			</function>
+				
+			<function name="Окончание">
+				<date>
+					<year><today/></year>
+					<add>
+						<month><today/></month>
+						<get value="1"/>
+					</add>
+					<get value="0"/>
+				</date>
+			</function>
+			
+		</state>
+		
+		<state name="Предыдущий">
+			
+			<function name="Новый">
+				<date>
+					<year><get field="Начало"/></year>
+					<sub><month><get field="Начало"/></month><get value="1"/></sub>
+					<get value="1"/>
+				</date>
+			</function>
+			
+			<function name="Установка">
+				<get value="1"/>
+			</function>
+			
+		</state>
+
+		<state name="Следующий">
+			
+			<function name="Новый">
+				<date>
+					<year><get field="Начало"/></year>
+					<add><month><get field="Начало"/></month><get value="1"/></add>
+					<get value="1"/>
+				</date>
+			</function>
+			
+			<function name="Установка">
+				<get value="1"/>
+			</function>
+			
+		</state>
+
+		<state name="Установка">
+			
+			<function name="Начало">
+				<get field="Новый"/>
+			</function>
+			
+			<function name="Окончание">
+				<date>
+					<year><get field="Начало"/></year>
+					<add>
+						<month><get field="Начало"/></month>
+						<get value="1"/>
+					</add>
+					<get value="0"/>
+				</date>
+			</function>
+			
+		</state>
+			
+	</type>
+
+	<form name="Период">
+		<cell text="Период с:"/>
+		<cell bind="Начало" outline="2">
+			<edit type="date"/>
+			<tool type="calendar"/>
+		</cell>
+		<cell text="по:" align="center"/>
+		<cell bind="Окончание" outline="2">
+			<edit type="date"/>
+			<tool type="calendar"/>
+		</cell>
+		<cell>
+			<label text="  "/>
+			<button name="Период.Предыдущий" text="&lt;"/>
+			<label text="  "/>
+			<button name="Период.Следующий" text="&gt;"/>
+		</cell>
+	</form>
+	
+</unit>
