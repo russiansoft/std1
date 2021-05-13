@@ -96,9 +96,9 @@
 		</cell>
 		<cell>
 			<label text="  "/>
-			<button name="Период.Предыдущий" text="&lt;"/>
+			<button name="Период.Предыдущий" text="&lt;" title="Предыдущий"/>
 			<label text="  "/>
-			<button name="Период.Следующий" text="&gt;"/>
+			<button name="Период.Следующий" text="&gt;" title="Следующий"/>
 		</cell>
 	</form>
 	
